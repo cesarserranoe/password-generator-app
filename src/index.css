@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@200;300;400&display=swap');
+
+:root {
+    --font-primary: 'Azeret Mono', monospace;
+    --font-main-color: #f2f2f2;
+    --header-color: rgb(16, 16, 16);
+    --header-color-shadow: rgb(31, 31, 31);
+    --main-gradient: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-primary);
+}
+
+main {
+    background-image: var(--main-gradient);
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header {
+    width: 100%;
+    height: 5vh;
+    text-align: center;
+    background-color: var(--header-color);
+    color: var(--font-main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__title {
+    font-weight: 400;
+    font-size: 1.6rem;
+}
+
+/* PASSWORD CONTAINER */
+.password {
+    width: 50%;
+    text-align: center;
+}
+
+/* passswor show panel */
+.password__content {
+    display: flex;
+    flex-wrap: wrap;
+    height: 50px;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
+.password__buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.password__generate {
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+    font-family: var(--font-primary);
+    border: none;
+    border-radius: 2px;
+    text-align: center;
+}
+
+.password__generateBtn {
+    background-color: var(--header-color);
+    height: 105%;
+    border: none;
+    color: var(--font-main-color);
+    padding: 10px 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color .7s;
+}
+
+.password__generateBtn:hover {
+    background-color: var(--header-color-shadow);
+}
+
+.password__clipboard {
+    width: 30px;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* password options */
+.password__options {
+    margin-bottom: 50px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.password__option {
+    background-color: var(--header-color);
+    border: none;
+    color: var(--font-main-color);
+    padding: 10px 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background-color .7s;
+}
+
+.password__option:hover {
+    background-color: var(--header-color-shadow);
+}
+
+.password__option.activated {
+    background-color: #8AE9C1;
+    color: var(--header-color);
+}
+
+/* password option length */
+.password__showLenght {
+    display: flex;
+    justify-content: center;
+    color: var(--font-main-color);
+    margin-bottom: 50px;
+}
+
+.password__range {
+    width: 70%;
+}
+
+/* password message info */
+.password__info {
+    font-weight: 200;
+    color: var(--font-main-color);
+    font-size: .8rem;
+    margin-bottom: 20px;
+}
+
+.password__infoSocial {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    text-align: center;
+    gap: 5px;
+}
+
+.password__infoIMG {
+    width: 20px;
+    height: 20px;
+}
+
+/* password 'copy' message */
+.message {
+    width: 300px;
+    height: 50px;
+    background-color: var(--header-color);
+    color: var(--font-main-color);
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    right: auto;
+    transform: translateY(50px);
+    transition: all 1s;
+}
+
+.message.is-copy {
+    transform: translateY(0);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .password {
+        width: 90%;
+    }
+
+    .password__content {
+        margin-bottom: 100px;
+    }
+
+    .password__generate {
+        font-size: 20px;
+    }
+
+    .password__option {
+        width: 70%;
+    }
+}
