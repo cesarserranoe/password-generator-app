@@ -29,7 +29,6 @@ export const PasswordContent = ({
     if (window.isSecureContext) {
       toggleMessageCopy();
       let copyPassword = password;
-      console.log(window.isSecureContext);
       navigator.clipboard.writeText(copyPassword);
     } else {
       alert("Copia la contraseña manualmente");

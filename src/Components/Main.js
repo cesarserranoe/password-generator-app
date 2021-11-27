@@ -51,7 +51,7 @@ export const Main = () => {
           <img className="password__infoIMG" src={githubImage} alt="github" />
           <a
             className="password__info"
-            href="https://github.com/cesarserranoe"
+            href="https://github.com/cesarserranoe/password-generator-app"
             target="blank"
           >
             GitHub
