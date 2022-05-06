@@ -1,11 +1,12 @@
+import React from "react";
 import { ButtonOption } from "./ButtonOption";
 
 interface Props {
   passwordLength: number;
   setPasswordLength: React.Dispatch<React.SetStateAction<number>>;
-  setPasswordNumbers: any;
-  setPasswordSymbols: any;
-  setPasswordUppercase: any;
+  setPasswordNumbers: React.Dispatch<React.SetStateAction<boolean>>;
+  setPasswordSymbols: React.Dispatch<React.SetStateAction<boolean>>;
+  setPasswordUppercase: React.Dispatch<React.SetStateAction<boolean>>;
   generatePassword: () => void;
 }
 
