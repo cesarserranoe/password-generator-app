@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { PasswordContent } from "./PasswordContent";
 import { PasswordOptions } from "./PasswordOptions";
 import githubImage from "../Assets/github.png";
+import { usePassword } from "../hooks/passwordGenerate";
 
 export const Main = () => {
+  const { getPassword } = usePassword();
+  const [password, setPassword] = useState("");
   const [showMessageCopy, setShowMessageCopy] = useState(false);
   //opciones para la contraseña
   const [passwordLength, setPasswordLength] = useState(16);
@@ -19,15 +22,23 @@ export const Main = () => {
     }, 2000);
   };
 
+  const generatePassword = () => {
+    setPassword(
+      getPassword({
+        passwordLength,
+        passwordNumbers,
+        passwordUppercase,
+        passwordSymbols,
+      })
+    );
+  };
   return (
     <main>
       <div className="password">
         {/* Paso de opciones de la contraseña por parámetro */}
         <PasswordContent
-          passwordLength={passwordLength}
-          passwordNumbers={passwordNumbers}
-          passwordSymbols={passwordSymbols}
-          passwordUppercase={passwordUppercase}
+          password={password}
+          generatePassword={generatePassword}
           toggleMessageCopy={toggleMessageCopy}
         />
         {/* Paso del cambio de estado por parámetro */}
@@ -36,6 +47,7 @@ export const Main = () => {
           setPasswordNumbers={setPasswordNumbers}
           setPasswordSymbols={setPasswordSymbols}
           setPasswordUppercase={setPasswordUppercase}
+          generatePassword={generatePassword}
           passwordLength={passwordLength}
         />
         <div className="password__showLenght">

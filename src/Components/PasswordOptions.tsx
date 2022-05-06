@@ -1,5 +1,13 @@
-import React from "react";
 import { ButtonOption } from "./ButtonOption";
+
+interface Props {
+  passwordLength: number;
+  setPasswordLength: React.Dispatch<React.SetStateAction<number>>;
+  setPasswordNumbers: any;
+  setPasswordSymbols: any;
+  setPasswordUppercase: any;
+  generatePassword: () => void;
+}
 
 export const PasswordOptions = ({
   passwordLength,
@@ -7,7 +15,8 @@ export const PasswordOptions = ({
   setPasswordNumbers,
   setPasswordSymbols,
   setPasswordUppercase,
-}) => {
+  generatePassword,
+}: Props) => {
   return (
     <div className="password__options">
       <ButtonOption
@@ -31,7 +40,10 @@ export const PasswordOptions = ({
         min="1"
         max="20"
         value={passwordLength}
-        onChange={(e) => setPasswordLength(e.target.value)}
+        onChange={(e) => {
+          setPasswordLength(parseInt(e.target.value) - 1);
+          generatePassword();
+        }}
       />
     </div>
   );

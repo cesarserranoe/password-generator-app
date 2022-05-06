@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-export const ButtonOption = ({ id, text, state }) => {
-  const [isActive, setIsActive] = useState(false);
+interface Props {
+  id: string;
+  text: string;
+  state: any;
+}
+
+export const ButtonOption = ({ id, text, state }: Props) => {
+  const [isActive, setIsActive] = useState<boolean>(false);
 
   const handleToggle = () => {
     setIsActive(!isActive);

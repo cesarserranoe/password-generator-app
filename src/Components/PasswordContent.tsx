@@ -1,30 +1,16 @@
-import React, { useState } from "react";
 import clipboards from "../Assets/clipboards.svg";
-var generator = require("generate-password");
+
+interface Props {
+  password: string;
+  generatePassword: () => void;
+  toggleMessageCopy: () => void;
+}
 
 export const PasswordContent = ({
-  passwordLength,
-  passwordNumbers,
-  passwordSymbols,
-  passwordUppercase,
+  password,
   toggleMessageCopy,
-}) => {
-  const [password, setPassword] = useState("");
-
-  //Generar la contraseña con el paquete de generate-password
-  //Se envia por un objeto las opciones
-  const generatePassword = () => {
-    let newPassword = generator.generate({
-      length: passwordLength,
-      numbers: passwordNumbers,
-      uppercase: passwordUppercase,
-      symbols: passwordSymbols,
-      exclude: `{}[]"^,.;_'|: `,
-    });
-
-    setPassword(newPassword);
-  };
-
+  generatePassword,
+}: Props) => {
   const copyPassword = () => {
     if (window.isSecureContext) {
       toggleMessageCopy();
@@ -41,7 +27,7 @@ export const PasswordContent = ({
         <input
           className="password__generate"
           type="text"
-          readOnly="readonly"
+          readOnly={true}
           value={password}
         />
       </div>
