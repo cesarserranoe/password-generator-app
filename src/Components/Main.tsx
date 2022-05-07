@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PasswordContent } from "./PasswordContent";
 import { PasswordOptions } from "./PasswordOptions";
 import githubImage from "../Assets/github.png";
@@ -13,6 +13,12 @@ export const Main = () => {
   const [passwordNumbers, setPasswordNumbers] = useState(false);
   const [passwordSymbols, setPasswordSymbols] = useState(false);
   const [passwordUppercase, setPasswordUppercase] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      generatePassword();
+    }, 200);
+  }, []);
 
   const toggleMessageCopy = () => {
     setShowMessageCopy(true);
