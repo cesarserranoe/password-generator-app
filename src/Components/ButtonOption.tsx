@@ -3,15 +3,15 @@ import { useState } from "react";
 interface Props {
   id: string;
   text: string;
-  state: any;
+  handle: (value: boolean) => void;
 }
 
-export const ButtonOption = ({ id, text, state }: Props) => {
-  const [isActive, setIsActive] = useState<boolean>(false);
+export const ButtonOption = ({ id, text, handle }: Props) => {
+  const [isActive, setIsActive] = useState(false);
 
   const handleToggle = () => {
     setIsActive(!isActive);
-    isActive ? state(false) : state(true);
+    isActive ? handle(false) : handle(true);
   };
 
   return (

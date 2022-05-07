@@ -38,6 +38,23 @@ export const Main = () => {
       })
     );
   };
+
+  const onHandlePassLength = (value: number) => {
+    setPasswordLength(value);
+  };
+
+  const onHandlePassNumber = (value: boolean) => {
+    setPasswordNumbers(value);
+  };
+
+  const onHandlePassSymbols = (value: boolean) => {
+    setPasswordSymbols(value);
+  };
+
+  const onHandlePassUppercase = (value: boolean) => {
+    setPasswordUppercase(value);
+  };
+
   return (
     <main>
       <div className="password">
@@ -49,10 +66,10 @@ export const Main = () => {
         />
         {/* Paso del cambio de estado por parámetro */}
         <PasswordOptions
-          setPasswordLength={setPasswordLength}
-          setPasswordNumbers={setPasswordNumbers}
-          setPasswordSymbols={setPasswordSymbols}
-          setPasswordUppercase={setPasswordUppercase}
+          handlePassLength={onHandlePassLength}
+          handlePassNumbers={onHandlePassNumber}
+          handlePassSymbols={onHandlePassSymbols}
+          handlePassUppercase={onHandlePassUppercase}
           generatePassword={generatePassword}
           passwordLength={passwordLength}
         />

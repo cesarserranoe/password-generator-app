@@ -3,19 +3,19 @@ import { ButtonOption } from "./ButtonOption";
 
 interface Props {
   passwordLength: number;
-  setPasswordLength: React.Dispatch<React.SetStateAction<number>>;
-  setPasswordNumbers: React.Dispatch<React.SetStateAction<boolean>>;
-  setPasswordSymbols: React.Dispatch<React.SetStateAction<boolean>>;
-  setPasswordUppercase: React.Dispatch<React.SetStateAction<boolean>>;
+  handlePassLength: (value: number) => void;
+  handlePassNumbers: (value: boolean) => void;
+  handlePassSymbols: (value: boolean) => void;
+  handlePassUppercase: (value: boolean) => void;
   generatePassword: () => void;
 }
 
 export const PasswordOptions = ({
   passwordLength,
-  setPasswordLength,
-  setPasswordNumbers,
-  setPasswordSymbols,
-  setPasswordUppercase,
+  handlePassLength,
+  handlePassNumbers,
+  handlePassSymbols,
+  handlePassUppercase,
   generatePassword,
 }: Props) => {
   return (
@@ -23,17 +23,17 @@ export const PasswordOptions = ({
       <ButtonOption
         id="Numbers"
         text="Add Numbers"
-        state={setPasswordNumbers}
+        handle={handlePassNumbers}
       />
       <ButtonOption
         id="SC"
         text="Add Special Characters"
-        state={setPasswordSymbols}
+        handle={handlePassSymbols}
       />
       <ButtonOption
         id="UpperCase"
         text="Add Uppercase Alphabets"
-        state={setPasswordUppercase}
+        handle={handlePassUppercase}
       />
       <input
         className="password__range"
@@ -42,7 +42,7 @@ export const PasswordOptions = ({
         max="20"
         value={passwordLength}
         onChange={(e) => {
-          setPasswordLength(parseInt(e.target.value) - 1);
+          handlePassLength(parseInt(e.target.value) - 1);
           generatePassword();
         }}
       />
