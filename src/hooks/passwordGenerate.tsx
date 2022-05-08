@@ -19,7 +19,7 @@ export const usePassword = () => {
       numbers: passwordNumbers,
       uppercase: passwordUppercase,
       symbols: passwordSymbols,
-      exclude: `{}[]"^,.;_'|: `,
+      exclude: `{}[]"^,.;_'\`~|:-()/<>`,
     });
   };
 
