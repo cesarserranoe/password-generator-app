@@ -1,59 +1,20 @@
-import { useEffect, useState } from "react";
 import { PasswordContent } from "./PasswordContent";
 import { PasswordOptions } from "./PasswordOptions";
+import { usePassword } from "../hooks/usePasswordGenerate";
+import { useCopyPassword } from "../hooks/useCopyPassword";
 import githubImage from "../Assets/github.png";
-import { usePassword } from "../hooks/passwordGenerate";
 
 export const Main = () => {
-  const { getPassword } = usePassword();
-  const [password, setPassword] = useState("");
-  const [showMessageCopy, setShowMessageCopy] = useState(false);
-  //opciones para la contraseña
-  const [passwordLength, setPasswordLength] = useState(16);
-  const [passwordNumbers, setPasswordNumbers] = useState(false);
-  const [passwordSymbols, setPasswordSymbols] = useState(false);
-  const [passwordUppercase, setPasswordUppercase] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      generatePassword();
-    }, 200);
-  }, []);
-
-  const toggleMessageCopy = () => {
-    setShowMessageCopy(true);
-
-    setTimeout(() => {
-      setShowMessageCopy(false);
-    }, 2000);
-  };
-
-  const generatePassword = () => {
-    setPassword(
-      getPassword({
-        passwordLength,
-        passwordNumbers,
-        passwordUppercase,
-        passwordSymbols,
-      })
-    );
-  };
-
-  const onHandlePassLength = (value: number) => {
-    setPasswordLength(value);
-  };
-
-  const onHandlePassNumber = (value: boolean) => {
-    setPasswordNumbers(value);
-  };
-
-  const onHandlePassSymbols = (value: boolean) => {
-    setPasswordSymbols(value);
-  };
-
-  const onHandlePassUppercase = (value: boolean) => {
-    setPasswordUppercase(value);
-  };
+  const {
+    password,
+    passwordLength,
+    getPassword,
+    handlePassLength,
+    handlePassNumber,
+    handlePassSymbols,
+    handlePassUpperCase,
+  } = usePassword();
+  const { showMessageCopy, toggleMessageCopy } = useCopyPassword();
 
   return (
     <main>
@@ -61,16 +22,16 @@ export const Main = () => {
         {/* Paso de opciones de la contraseña por parámetro */}
         <PasswordContent
           password={password}
-          generatePassword={generatePassword}
+          generatePassword={getPassword}
           toggleMessageCopy={toggleMessageCopy}
         />
         {/* Paso del cambio de estado por parámetro */}
         <PasswordOptions
-          handlePassLength={onHandlePassLength}
-          handlePassNumbers={onHandlePassNumber}
-          handlePassSymbols={onHandlePassSymbols}
-          handlePassUppercase={onHandlePassUppercase}
-          generatePassword={generatePassword}
+          handlePassLength={handlePassLength}
+          handlePassNumbers={handlePassNumber}
+          handlePassSymbols={handlePassSymbols}
+          handlePassUppercase={handlePassUpperCase}
+          generatePassword={getPassword}
           passwordLength={passwordLength}
         />
         <div className="password__showLenght">
