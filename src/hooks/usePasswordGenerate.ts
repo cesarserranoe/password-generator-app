@@ -1,13 +1,5 @@
 import { useState } from "react";
-
 var generator = require("generate-password");
-
-interface Props {
-  passwordLength: number;
-  passwordNumbers: boolean;
-  passwordSymbols: boolean;
-  passwordUppercase: boolean;
-}
 
 export const usePassword = () => {
   const [password, setPassword] = useState("");
